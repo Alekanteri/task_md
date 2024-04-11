@@ -1,10 +1,16 @@
-import { FC, forwardRef } from "react";
+import { FC } from "react";
 import { SidebarProps } from "../model/Sidebar";
+import { SidebarHeader } from "./SidebarHeader";
+import { SidebarBody } from "./SidebarBody";
 
 export const Sidebar: FC<SidebarProps> = ({
   children,
   ...props
 }: SidebarProps): JSX.Element => {
-  return <div {...props}>{children}</div>;
+  return (
+    <aside {...props} className="w-[250px] mt-8">
+      <SidebarHeader />
+      <SidebarBody>{children}</SidebarBody>
+    </aside>
+  );
 };
-

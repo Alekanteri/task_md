@@ -1,5 +1,5 @@
 import { ComponentProps, ReactNode } from "react";
 
-export interface SidebarProps extends ComponentProps<"aside"> {
+export interface BodyProps extends ComponentProps<"section"> {
   children: ReactNode;
 }
