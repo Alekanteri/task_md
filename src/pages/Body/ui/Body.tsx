@@ -1,4 +1,6 @@
+import { Markdown } from "@entities/Markdown";
 import { NoteListBody } from "@shared/ui/NoteList";
+import { Title } from "@shared/ui/Title";
 import { Layout } from "@widgets/Layout";
 import { Main } from "@widgets/Main";
 import { Sidebar } from "@widgets/Sidebar";
@@ -11,7 +13,10 @@ export const Body: FC = (): JSX.Element => {
         <Sidebar>
           <NoteListBody />
         </Sidebar>
-        <Main>Hello Main</Main>
+        <Main>
+          <Title title="hello world" />
+          <Markdown />
+        </Main>
       </Layout>
     </>
   );
