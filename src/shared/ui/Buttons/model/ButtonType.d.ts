@@ -1,3 +1,5 @@
 import { ComponentProps } from "react";
 
-export type ButtonType = ComponentProps<"button">;
+export interface ButtonType extends ComponentProps<"button"> {
+  func?: () => void;
+}

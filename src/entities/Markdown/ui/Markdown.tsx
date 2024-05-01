@@ -1,3 +1,4 @@
+import { MarkdownContentRender } from "@feautures/MarkdownContentRender";
 import {
   MDXEditor,
   headingsPlugin,
@@ -8,10 +9,17 @@ import {
 } from "@mdxeditor/editor";
 import { FC } from "react";
 
-export const Markdown: FC = (): JSX.Element => {
+export const Markdown: FC = (): JSX.Element | null => {
+  const { markDownRef, handleAutoSave, selectedNote } = MarkdownContentRender();
+
+  if (!selectedNote) return null;
+
   return (
     <MDXEditor
-      markdown="# Hello world"
+      ref={markDownRef}
+      key={selectedNote.title.substring(0, selectedNote.title.indexOf("."))}
+      markdown={selectedNote.content}
+      onChange={handleAutoSave}
       plugins={[
         headingsPlugin(),
         listsPlugin(),

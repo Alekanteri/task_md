@@ -1,14 +1,28 @@
+import { DeleteFile } from "@entities/DeleteFile";
+import { DeleteNote } from "@feautures/DeleteNote";
 import { DefaultButton } from "@shared/ui/Buttons/DefaultButton";
-import { ButtonType } from "@shared/ui/Buttons/model/ButtonType";
-import { ComponentProps, FC } from "react";
-import { MdDeleteOutline } from "react-icons/md";
+import { useSetAtom } from "jotai";
+import { FC } from "react";
+import { MdClose } from "react-icons/md";
 
-export const DeleteNoteButton: FC<ButtonType> = ({
-  ...props
-}: ButtonType): JSX.Element => {
+type DelButtonProps = {
+  filename: string;
+};
+
+export const DeleteNoteButton: FC<DelButtonProps> = ({
+  filename,
+}: DelButtonProps): JSX.Element => {
+  const deleteCurNote = useSetAtom(DeleteNote);
+
+  const handleDeleteCurNote = () => {
+    DeleteFile(filename);
+    deleteCurNote();
+    location.reload();
+  };
+
   return (
-    <DefaultButton>
-      <MdDeleteOutline className="w-4 h-4 text-zinc-300" />
+    <DefaultButton onClick={handleDeleteCurNote}>
+      <MdClose className="w-3 h-3 text-zinc-300" />
     </DefaultButton>
   );
 };

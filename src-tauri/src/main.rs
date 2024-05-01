@@ -7,10 +7,18 @@
 use tauri::Manager;
 use window_vibrancy::{apply_vibrancy, NSVisualEffectMaterial};
 
-// Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
+use std::fs;
+use std::time::UNIX_EPOCH;
+
 #[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
+fn modified_time(file_path: String) -> u128 {
+    fs::metadata(file_path)
+        .unwrap()
+        .modified()
+        .unwrap()
+        .duration_since(UNIX_EPOCH)
+        .unwrap()
+        .as_millis()
 }
 
 fn main() {
@@ -24,7 +32,7 @@ fn main() {
             Ok(())
         })
         .plugin(tauri_plugin_window_state::Builder::default().build())
-        .invoke_handler(tauri::generate_handler![greet])
+        .invoke_handler(tauri::generate_handler![modified_time])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

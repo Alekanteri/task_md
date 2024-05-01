@@ -1,3 +1,5 @@
 import { ComponentProps } from "react";
 
-export type NoteListBodyProps = ComponentProps<"ul">;
+export interface NoteListBodyProps extends ComponentProps<"ul"> {
+  onSelect?: () => void;
+}

@@ -1,5 +1,3 @@
 import { ComponentProps } from "react";
 
-export interface TitleProps extends ComponentProps<"div"> {
-  title: string;
-}
+export type TitleProps = ComponentProps<"div">;

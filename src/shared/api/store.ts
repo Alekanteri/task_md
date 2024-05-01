@@ -1,4 +1,4 @@
-import { NoteInfo } from "./models";
+import { NoteInfo } from "../model/models";
 
 export const noteArray: NoteInfo[] = [
   {
