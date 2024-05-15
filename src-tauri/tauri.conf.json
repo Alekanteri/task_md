@@ -6,22 +6,36 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "task_md",
-    "version": "0.0.0"
+    "productName": "taskMD",
+    "version": "1.0.0"
   },
   "tauri": {
+    "macOSPrivateApi": true,
     "allowlist": {
       "all": false,
       "shell": {
         "all": false,
         "open": true
+      },
+      "window": {
+        "all": true
+      },
+      "fs": {
+        "all": true,
+        "scope": ["$RESOURCE/**"]
+      },
+      "path": {
+        "all": true
       }
     },
     "windows": [
       {
-        "title": "task_md",
-        "width": 800,
-        "height": 600
+        "transparent": true,
+        "decorations": true,
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": true,
+        "minHeight": 560,
+        "minWidth": 980
       }
     ],
     "security": {
@@ -30,13 +44,12 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.tauri.dev",
+      "identifier": "TaskMD",
       "icon": [
-        "icons/32x32.png",
-        "icons/128x128.png",
-        "icons/128x128@2x.png",
-        "icons/icon.icns",
-        "icons/icon.ico"
+        "icons/32x32.ico",
+        "icons/192x192.png",
+        "icons/512x512.png",
+        "icons/icon.icns"
       ]
     }
   }
