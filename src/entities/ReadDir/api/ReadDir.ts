@@ -1,5 +1,5 @@
 import { invoke } from "@tauri-apps/api/tauri";
-import { BaseDirectory, readDir } from "@tauri-apps/api/fs";
+import { BaseDirectory, readDir, createDir } from "@tauri-apps/api/fs";
 import {
   FileEntryArray,
   GetLastEdditedTimeProps,
@@ -27,11 +27,12 @@ export const readDirectory: ReadDirectoryProps = async () => {
       files.map(async (item) => {
         const time = await getLastEdditedTime(item);
         return { title: item.name!, lastEditedTime: time };
-      }),
+      })
     );
 
     array.push(...noteInfos);
   } catch (err) {
+    await createDir("dir", { dir: BaseDirectory.Resource, recursive: true });
     console.log(err);
   }
   return array;

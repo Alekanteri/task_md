@@ -1,4 +1,4 @@
-import { forwardRef, ComponentProps, ForwardedRef } from "react";
+import { forwardRef, ForwardedRef } from "react";
 import { MainProps, Ref } from "../model/Main";
 
 export const Main = forwardRef<Ref, MainProps>(
@@ -10,7 +10,7 @@ export const Main = forwardRef<Ref, MainProps>(
     >
       {children}
     </div>
-  ),
+  )
 );
 
 Main.displayName = "Main";

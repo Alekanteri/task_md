@@ -1,4 +1,3 @@
-import { noteArray } from "@shared/api/store";
 import { NoteListBodyProps } from "../model/NoteListBody";
 import { FC } from "react";
 import { NoteListItem } from "./NoteListItem";
